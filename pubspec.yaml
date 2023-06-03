@@ -1,7 +1,9 @@
 name: vertical_scroll_tabbar
 description: Vertical Scroll Tabbar
 version: 0.0.1
-homepage:
+homepage: https://github.com/sejun2/vertical_scroll_tabbar
+repository: https://github.com/sejun2/vertical_scroll_tabbar
+publisher: qpfjf56@gmail.com
 
 environment:
   sdk: '>=3.0.1 <4.0.0'

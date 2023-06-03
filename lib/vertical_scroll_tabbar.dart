@@ -7,11 +7,9 @@ import 'package:flutter/material.dart';
 class VerticalScrollTabbar extends StatefulWidget {
   const VerticalScrollTabbar(
       {super.key,
-      required this.title,
       required this.children,
       required this.tabs});
 
-  final String title;
   final List<Widget> children;
   final List<Tab> tabs;
 
