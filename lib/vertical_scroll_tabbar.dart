@@ -1,7 +1,6 @@
 library vertical_scroll_tabbar;
 
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 class VerticalScrollTabbar extends StatefulWidget {
