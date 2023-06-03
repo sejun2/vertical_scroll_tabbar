@@ -6,7 +6,7 @@ repository: https://github.com/sejun2/vertical_scroll_tabbar
 publisher: qpfjf56@gmail.com
 
 environment:
-  sdk: '>=3.0.1 <4.0.0'
+  sdk: '>=2.18.3 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
