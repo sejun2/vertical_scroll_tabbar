@@ -11,6 +11,7 @@ class VerticalScrollTabbar extends StatefulWidget {
       {super.key,
       required this.children,
       required this.tabs,
+      this.isScrollable = false,
       this.indicatorColor,
       this.onTabChange});
 
@@ -27,6 +28,9 @@ class VerticalScrollTabbar extends StatefulWidget {
 
   /// tabbar indicator color
   final Color? indicatorColor;
+
+  /// is tabbar scrollable
+  final bool isScrollable;
 
   @override
   State<VerticalScrollTabbar> createState() => _VerticalScrollTabbarState();
@@ -97,6 +101,7 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
     return Column(
       children: [
         TabBar(
+          isScrollable: widget.isScrollable ,
           indicatorColor: widget.indicatorColor,
           tabs: [...widget.tabs],
           controller: tabController,
