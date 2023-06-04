@@ -5,16 +5,23 @@ import 'package:flutter/material.dart';
 
 /// A vertical scroll tabbar, which provides automated tabbar index changing when content is scrolled.
 /// Children's length must equal tabs 's length.
+/// Children must have GlobalKey.
 class VerticalScrollTabbar extends StatefulWidget {
   const VerticalScrollTabbar(
       {super.key,
       required this.children,
-      required this.tabs});
+      required this.tabs,
+      this.indicatorColor, this.onTabChange});
 
   /// Widgets to display in the tab bar's content section.
   final List<Widget> children;
   /// Tabs that will be displayed in the tab bar.
   final List<Tab> tabs;
+  /// Callback when tab changed
+  final Function(int index)? onTabChange;
+
+  /// tabbar indicator color
+  final Color? indicatorColor;
 
   @override
   State<VerticalScrollTabbar> createState() => _VerticalScrollTabbarState();
@@ -79,9 +86,11 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
     return Column(
       children: [
         TabBar(
+          indicatorColor: widget.indicatorColor,
           tabs: [...widget.tabs],
           controller: tabController,
           onTap: (index) {
+            widget.onTabChange?.call(index);
             mutex = true;
             scrollController.animateTo(indexList[index],
                 duration: const Duration(milliseconds: 500),
