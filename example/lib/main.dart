@@ -16,21 +16,25 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
           child: VerticalScrollTabbar(
+            indicatorColor: Colors.red,
+            onTabChange: (index) {
+              print(index);
+            },
             tabs: const [
               Tab(
-                text: 'A',
+                child: Text('A', style: TextStyle(color: Colors.black),),
               ),
               Tab(
-                text: 'B',
+                child: Text('B', style: TextStyle(color: Colors.black),),
               ),
               Tab(
-                text: 'C',
+                child: Text('C', style: TextStyle(color: Colors.black),),
               ),
               Tab(
-                text: 'D',
+                child: Text('D', style: TextStyle(color: Colors.black),),
               ),
               Tab(
-                text: 'E',
+                child: Text('E', style: TextStyle(color: Colors.black),),
               ),
             ],
             children: [
