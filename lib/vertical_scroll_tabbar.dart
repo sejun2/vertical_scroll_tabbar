@@ -11,13 +11,18 @@ class VerticalScrollTabbar extends StatefulWidget {
       {super.key,
       required this.children,
       required this.tabs,
-      this.indicatorColor, this.onTabChange});
+      this.indicatorColor,
+      this.onTabChange});
 
   /// Widgets to display in the tab bar's content section.
   final List<Widget> children;
+
   /// Tabs that will be displayed in the tab bar.
   final List<Tab> tabs;
+
   /// Callback when tab changed
+  /// Return index of tab
+  /// if index is -1, it means something wrong
   final Function(int index)? onTabChange;
 
   /// tabbar indicator color
@@ -33,13 +38,17 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
 
   /// Scroll controller for the tab bar's content section.
   ScrollController scrollController = ScrollController();
+
   /// List of indexes for the tab bar's content section.
   /// This is used to determine which tab to select when the user scrolls.
   List indexList = [];
+
   /// Tab controller for the tab bar.
   TabController? tabController;
+
   /// Mutex to prevent unexpected tab changes when tap the tab bar items.
   bool mutex = false;
+
   /// Timer for debounce
   Timer? timer;
 
@@ -53,6 +62,8 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
       vsync: this,
     );
     tabController?.addListener(() {
+      widget.onTabChange?.call(tabController?.index ?? -1);
+
       if (tabController?.animation?.isCompleted ?? true) {
         timer?.cancel();
         timer = Timer(const Duration(milliseconds: 500), () {
@@ -90,7 +101,6 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
           tabs: [...widget.tabs],
           controller: tabController,
           onTap: (index) {
-            widget.onTabChange?.call(index);
             mutex = true;
             scrollController.animateTo(indexList[index],
                 duration: const Duration(milliseconds: 500),
@@ -123,8 +133,10 @@ class _ListWidget extends StatefulWidget {
 
   /// Widgets to display in the tab bar's content section.
   final List<Widget> children;
+
   /// Scroll controller for the tab bar's content section.
   final ScrollController scrollController;
+
   /// Callback function that is called when the list of indexes is initialized.
   final Function(List indexList) onIndexInit;
 
