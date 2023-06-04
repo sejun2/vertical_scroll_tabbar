@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:vertical_scroll_tabbar/vertical_scroll_tabbar.dart';
 
