@@ -3,13 +3,17 @@ library vertical_scroll_tabbar;
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+/// A vertical scroll tabbar, which provides automated tabbar index changing when content is scrolled.
+/// Children's length must equal tabs 's length.
 class VerticalScrollTabbar extends StatefulWidget {
   const VerticalScrollTabbar(
       {super.key,
       required this.children,
       required this.tabs});
 
+  /// Widgets to display in the tab bar's content section.
   final List<Widget> children;
+  /// Tabs that will be displayed in the tab bar.
   final List<Tab> tabs;
 
   @override
@@ -18,10 +22,18 @@ class VerticalScrollTabbar extends StatefulWidget {
 
 class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
     with SingleTickerProviderStateMixin {
+  //TODO("Satoshi"): Set options for tabbar
+
+  /// Scroll controller for the tab bar's content section.
   ScrollController scrollController = ScrollController();
+  /// List of indexes for the tab bar's content section.
+  /// This is used to determine which tab to select when the user scrolls.
   List indexList = [];
+  /// Tab controller for the tab bar.
   TabController? tabController;
+  /// Mutex to prevent unexpected tab changes when tap the tab bar items.
   bool mutex = false;
+  /// Timer for debounce
   Timer? timer;
 
   @override
@@ -77,7 +89,7 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
           },
         ),
         Expanded(
-          child: ListWidget(
+          child: _ListWidget(
               scrollController: scrollController,
               onIndexInit: (indexList) {
                 this.indexList.addAll(indexList);
@@ -91,23 +103,30 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
   }
 }
 
-class ListWidget extends StatefulWidget {
-  const ListWidget({
+/// A widget that contains a list of widgets, which is content section
+class _ListWidget extends StatefulWidget {
+  const _ListWidget({
     Key? key,
     required this.children,
     required this.scrollController,
     required this.onIndexInit,
   }) : super(key: key);
 
+  /// Widgets to display in the tab bar's content section.
   final List<Widget> children;
+  /// Scroll controller for the tab bar's content section.
   final ScrollController scrollController;
+  /// Callback function that is called when the list of indexes is initialized.
   final Function(List indexList) onIndexInit;
 
   @override
-  State<ListWidget> createState() => _ListWidgetState();
+  State<_ListWidget> createState() => _ListWidgetState();
 }
 
-class _ListWidgetState extends State<ListWidget> {
+class _ListWidgetState extends State<_ListWidget> {
+  /// List of indexes for the tab bar's content section.
+  /// This is used to determine which tab to select when the user scrolls.
+  /// OnIndexInit function's parameter.
   final List indexes = [];
 
   @override
