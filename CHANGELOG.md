@@ -12,3 +12,8 @@
 ## 0.0.3
 * fix onTabChanged callback not working by scrolling content
 * update comments
+
+## 0.0.4
+* isScrollable property added
+* update comments
+* update example
