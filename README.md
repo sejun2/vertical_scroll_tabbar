@@ -15,6 +15,17 @@ VerticalScrollTabbar(
 );
 ```
 
-# Prerequisite
+## Parameters
+
+| Parameter | Type         | Description                            | Required | Default |
+| --- |--------------|----------------------------------------|----------|--------|
+| tabs | List<Widget> | Tabbar items                           | false | |
+| children | List<Widget> | Scroll view items                      | false | |
+ | isScrollable | bool         | Whether the tab bar is scrollable.     | false | false|
+ | indicatorColor | Color       | The color of selected tab's underline. | false | |
+ | onTabChanged | Function(int index) | Called when tab index is changed       | false | |
+
+
+## Requirements
  - `tabs` and `children` must have same length.    
  - children must have `GlobalKey` as key Property
