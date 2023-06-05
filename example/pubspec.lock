@@ -187,11 +187,10 @@ packages:
   vertical_scroll_tabbar:
     dependency: "direct main"
     description:
-      name: vertical_scroll_tabbar
-      sha256: "562528ac314b5033d93967141b367c19a9da0703907a97fc481d03370878db1c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
+      path: ".."
+      relative: true
+    source: path
+    version: "0.0.3"
 sdks:
   dart: ">=2.19.6 <3.0.0"
   flutter: ">=1.17.0"

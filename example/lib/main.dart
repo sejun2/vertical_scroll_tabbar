@@ -16,25 +16,56 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
           child: VerticalScrollTabbar(
+            isScrollable: true,
             indicatorColor: Colors.red,
             onTabChange: (index) {
               print(index);
             },
-            tabs: const [
+            tabs: [
               Tab(
-                child: Text('A', style: TextStyle(color: Colors.black),),
+                child: Container(
+                    alignment: Alignment.center,
+                    width: 100,
+                    child: const Text(
+                      'A',
+                      style: TextStyle(color: Colors.black),
+                    )),
               ),
               Tab(
-                child: Text('B', style: TextStyle(color: Colors.black),),
+                child: Container(
+                    alignment: Alignment.center,
+                    width: 100,
+                    child: const Text(
+                      'B',
+                      style: TextStyle(color: Colors.black),
+                    )),
               ),
               Tab(
-                child: Text('C', style: TextStyle(color: Colors.black),),
+                child: Container(
+                    alignment: Alignment.center,
+                    width: 100,
+                    child: const Text(
+                      'C',
+                      style: TextStyle(color: Colors.black),
+                    )),
               ),
               Tab(
-                child: Text('D', style: TextStyle(color: Colors.black),),
+                child: Container(
+                    alignment: Alignment.center,
+                    width: 100,
+                    child: const Text(
+                      'D',
+                      style: TextStyle(color: Colors.black),
+                    )),
               ),
               Tab(
-                child: Text('E', style: TextStyle(color: Colors.black),),
+                child: Container(
+                  alignment: Alignment.center,
+                    width: 100,
+                    child: const Text(
+                      'E',
+                      style: TextStyle(color: Colors.black),
+                    )),
               ),
             ],
             children: [
@@ -62,7 +93,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 List<Widget> a = [
   Container(
