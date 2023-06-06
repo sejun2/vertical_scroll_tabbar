@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
                     alignment: Alignment.center,
                     width: 100,
                     child: const Text(
-                      'A',
+                      'REDS',
                       style: TextStyle(color: Colors.black),
                     )),
               ),
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
                     alignment: Alignment.center,
                     width: 100,
                     child: const Text(
-                      'B',
+                      'BLUES',
                       style: TextStyle(color: Colors.black),
                     )),
               ),
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
                     alignment: Alignment.center,
                     width: 100,
                     child: const Text(
-                      'C',
+                      'GREENS',
                       style: TextStyle(color: Colors.black),
                     )),
               ),
@@ -54,16 +54,16 @@ class MyApp extends StatelessWidget {
                     alignment: Alignment.center,
                     width: 100,
                     child: const Text(
-                      'D',
+                      'BLUES',
                       style: TextStyle(color: Colors.black),
                     )),
               ),
               Tab(
                 child: Container(
-                  alignment: Alignment.center,
+                    alignment: Alignment.center,
                     width: 100,
                     child: const Text(
-                      'E',
+                      'REDS',
                       style: TextStyle(color: Colors.black),
                     )),
               ),
@@ -71,20 +71,20 @@ class MyApp extends StatelessWidget {
             children: [
               Column(
                 key: GlobalKey(),
-                children: [...a],
+                children: [...reds],
               ),
-              Column(key: GlobalKey(), children: [...b]),
+              Column(key: GlobalKey(), children: [...greens]),
               Column(
                 key: GlobalKey(),
-                children: [...c],
-              ),
-              Column(
-                key: GlobalKey(),
-                children: [...b],
+                children: [...blues],
               ),
               Column(
                 key: GlobalKey(),
-                children: [...a],
+                children: [...greens],
+              ),
+              Column(
+                key: GlobalKey(),
+                children: [...reds],
               ),
             ],
           ),
@@ -94,7 +94,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-List<Widget> a = [
+List<Widget> reds = [
+  Container(padding: const EdgeInsets.all(20), child: const Text("Reds title")),
+  Container(
+    margin: const EdgeInsets.all(20),
+    height: 100,
+    width: 100,
+    color: Colors.red,
+  ),
   Container(
     margin: const EdgeInsets.all(20),
     height: 100,
@@ -175,7 +182,9 @@ List<Widget> a = [
   ),
 ];
 
-List<Widget> b = [
+List<Widget> greens = [
+  Container(
+      padding: const EdgeInsets.all(20), child: const Text("Blues title")),
   Container(
     margin: const EdgeInsets.all(20),
     height: 100,
@@ -244,7 +253,9 @@ List<Widget> b = [
   ),
 ];
 
-List<Widget> c = [
+List<Widget> blues = [
+  Container(
+      padding: const EdgeInsets.all(20), child: const Text("Greens title")),
   Container(
     margin: const EdgeInsets.all(20),
     height: 100,
