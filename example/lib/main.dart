@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vertical_scroll_tabbar/vertical_scroll_tabbar.dart';
+import 'package:vertical_scroll_tabbar_icon/vertical_scroll_tabbar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
           child: VerticalScrollTabbar(
             isScrollable: true,
             indicatorColor: Colors.red,
+            isIcon: true,
             onTabChange: (index) {
               print(index);
             },
@@ -183,8 +184,7 @@ List<Widget> reds = [
 ];
 
 List<Widget> greens = [
-  Container(
-      padding: const EdgeInsets.all(20), child: const Text("Blues title")),
+  Container(padding: const EdgeInsets.all(20), child: const Text("Blues title")),
   Container(
     margin: const EdgeInsets.all(20),
     height: 100,
@@ -254,8 +254,7 @@ List<Widget> greens = [
 ];
 
 List<Widget> blues = [
-  Container(
-      padding: const EdgeInsets.all(20), child: const Text("Greens title")),
+  Container(padding: const EdgeInsets.all(20), child: const Text("Greens title")),
   Container(
     margin: const EdgeInsets.all(20),
     height: 100,

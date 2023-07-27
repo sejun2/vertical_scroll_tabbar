@@ -1,8 +1,7 @@
-name: vertical_scroll_tabbar
-description: A flutter widget that provides vertical scroll tabbar.
-version: 0.0.4
-homepage: https://github.com/sejun2/vertical_scroll_tabbar
-repository: https://github.com/sejun2/vertical_scroll_tabbar
+name: vertical_scroll_tabbar_icon
+description: A flutter widget that provides vertical scroll tabbar... and also supported tab indicator with icon image.
+
+publish_to: 'none'
 
 environment:
   sdk: '>=2.18.3 <4.0.0'

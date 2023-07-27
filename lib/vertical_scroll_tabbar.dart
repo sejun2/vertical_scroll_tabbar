@@ -1,4 +1,4 @@
-library vertical_scroll_tabbar;
+library vertical_scroll_tabbar_icon;
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -7,14 +7,16 @@ import 'package:flutter/material.dart';
 /// Children's length must equal tabs 's length.
 /// Children must have GlobalKey.
 class VerticalScrollTabbar extends StatefulWidget {
-
-  const VerticalScrollTabbar(
-      {super.key,
-      required this.children,
-      required this.tabs,
-      this.isScrollable = false,
-      this.indicatorColor,
-      this.onTabChange});
+  const VerticalScrollTabbar({
+    super.key,
+    required this.children,
+    required this.tabs,
+    this.isScrollable = false,
+    this.indicatorColor,
+    this.indicatorIconPath,
+    this.onTabChange,
+    this.isIcon = false,
+  });
 
   /// Widgets to display in the tab bar's content section.
   final List<Widget> children;
@@ -30,8 +32,14 @@ class VerticalScrollTabbar extends StatefulWidget {
   /// tabbar indicator color
   final Color? indicatorColor;
 
+  /// tabbar indicator IconPath
+  final String? indicatorIconPath;
+
   /// is tabbar scrollable
   final bool isScrollable;
+
+  /// is tabbar icon
+  final bool isIcon;
 
   @override
   State<VerticalScrollTabbar> createState() => _VerticalScrollTabbarState();
@@ -59,8 +67,7 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
 
   @override
   void initState() {
-    assert(widget.children.length == widget.tabs.length,
-        'children.length must equal tabs.length');
+    assert(widget.children.length == widget.tabs.length, 'children.length must equal tabs.length');
 
     tabController = TabController(
       length: widget.tabs.length,
@@ -102,15 +109,23 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
     return Column(
       children: [
         TabBar(
-          isScrollable: widget.isScrollable ,
+          isScrollable: widget.isScrollable,
           indicatorColor: widget.indicatorColor,
+          indicatorSize: widget.isIcon ? TabBarIndicatorSize.tab : TabBarIndicatorSize.label,
+          indicator: widget.isIcon
+              ? BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        widget.indicatorIconPath ?? "https://i.stack.imgur.com/ILTQq.png"),
+                  ),
+                )
+              : null,
           tabs: [...widget.tabs],
           controller: tabController,
           onTap: (index) {
             mutex = true;
             scrollController.animateTo(indexList[index],
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.easeIn);
+                duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
           },
         ),
         Expanded(
@@ -164,9 +179,7 @@ class _ListWidgetState extends State<_ListWidget> {
       for (var element in widget.children) {
         assert(element.key != null && element.key is GlobalKey);
 
-        final res = ((element.key as GlobalKey)
-                .currentContext
-                ?.findRenderObject() as RenderBox)
+        final res = ((element.key as GlobalKey).currentContext?.findRenderObject() as RenderBox)
             .localToGlobal(Offset.zero, ancestor: ancestor);
 
         indexes.add(res.dy);
