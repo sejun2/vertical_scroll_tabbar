@@ -106,6 +106,7 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
 
   @override
   Widget build(BuildContext context) {
+    String iconPath = widget.indicatorIconPath ?? "https://i.stack.imgur.com/ILTQq.png";
     return Column(
       children: [
         TabBar(
@@ -115,8 +116,9 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
           indicator: widget.isIcon
               ? BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage(
-                        widget.indicatorIconPath ?? "https://i.stack.imgur.com/ILTQq.png"),
+                    image: iconPath.contains("://")
+                        ? NetworkImage(iconPath) as ImageProvider<Object>
+                        : AssetImage(iconPath),
                   ),
                 )
               : null,
