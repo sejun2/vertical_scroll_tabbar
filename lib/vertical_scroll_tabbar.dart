@@ -14,6 +14,7 @@ class VerticalScrollTabbar extends StatefulWidget {
     this.isScrollable = false,
     this.indicatorColor,
     this.indicatorIconPath,
+    this.indicatorPadding,
     this.onTabChange,
     this.isIcon = false,
   });
@@ -34,6 +35,9 @@ class VerticalScrollTabbar extends StatefulWidget {
 
   /// tabbar indicator IconPath
   final String? indicatorIconPath;
+
+  /// tabbar indicator padding
+  final EdgeInsetsGeometry? indicatorPadding;
 
   /// is tabbar scrollable
   final bool isScrollable;
@@ -111,6 +115,7 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
       children: [
         TabBar(
           isScrollable: widget.isScrollable,
+          indicatorPadding: widget.indicatorPadding ?? const EdgeInsets.all(10),
           indicatorColor: widget.indicatorColor,
           indicatorSize: widget.isIcon ? TabBarIndicatorSize.tab : TabBarIndicatorSize.label,
           indicator: widget.isIcon
