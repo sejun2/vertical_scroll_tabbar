@@ -17,3 +17,7 @@
 * isScrollable property added
 * update comments
 * update example
+
+## 0.0.4+1
+* update readme
+* update description
