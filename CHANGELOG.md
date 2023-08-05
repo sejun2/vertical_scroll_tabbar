@@ -21,3 +21,6 @@
 ## 0.0.4+1
 * update readme
 * update description
+
+## 0.0.4+2
+* update readme
