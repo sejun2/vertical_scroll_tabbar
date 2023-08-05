@@ -4,10 +4,7 @@ Vertical scroll view with tabbar.
 Automatically change tabbar index when scroll view is scrolled.   
 And also, when tap tabbar item, scroll view will be scrolled to the top of the tabbar index.   
 
-
-
-https://github.com/sejun2/vertical_scroll_tabbar/assets/33044667/37077567-b999-4408-a214-155ab2e7ee1b
-
+![Simulator Screen Recording - iPhone 14 Pro - 2023-08-05 at 20 41 41](https://github.com/sejun2/vertical_scroll_tabbar/assets/33044667/44a398b9-b9bd-4b5f-857d-46840c42d3aa)
 
 
 ## Usage
