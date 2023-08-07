@@ -10,7 +10,7 @@ And also, when tap tabbar item, scroll view will be scrolled to the top of the t
 ## Usage
 
 ```dart
-VerticalScrollTabbar([Simulator Screen Recording - iPhone 14 Pro - 2023-08-05 at 20.31.57.mp4](..%2F..%2FDesktop%2FSimulator%20Screen%20Recording%20-%20iPhone%2014%20Pro%20-%202023-08-05%20at%2020.31.57.mp4)
+VerticalScrollTabbar(
     tabs: [...],
     children: [...],
 );
