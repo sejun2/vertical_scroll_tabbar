@@ -2,7 +2,6 @@
 
 * initial release
 
-
 ## 0.0.2
 
 * update comments
@@ -27,3 +26,7 @@
 
 ## 0.0.4+3
 * update readme
+ 
+## 0.0.4+4
+* update readme
+* fix dart format
