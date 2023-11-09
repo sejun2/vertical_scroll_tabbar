@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 /// Children's length must equal tabs 's length.
 /// Children must have GlobalKey.
 class VerticalScrollTabbar extends StatefulWidget {
-
   const VerticalScrollTabbar(
       {super.key,
       required this.children,
@@ -102,7 +101,7 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
     return Column(
       children: [
         TabBar(
-          isScrollable: widget.isScrollable ,
+          isScrollable: widget.isScrollable,
           indicatorColor: widget.indicatorColor,
           tabs: [...widget.tabs],
           controller: tabController,

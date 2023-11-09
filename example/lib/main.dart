@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:vertical_scroll_tabbar/vertical_scroll_tabbar.dart';
 
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
             isScrollable: true,
             indicatorColor: Colors.red,
             onTabChange: (index) {
-              print(index);
+              log(index.toString());
             },
             tabs: [
               Tab(
