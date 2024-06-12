@@ -14,7 +14,9 @@ class VerticalScrollTabbar extends StatefulWidget {
       required this.tabs,
       this.isScrollable = false,
       this.indicatorColor,
-      this.onTabChange});
+      this.onTabChange,
+      this.width,
+      this.height});
 
   /// Widgets to display in the tab bar's content section.
   final List<Widget> children;
@@ -32,6 +34,8 @@ class VerticalScrollTabbar extends StatefulWidget {
 
   /// is tabbar scrollable
   final bool isScrollable;
+
+  final double? width, height;
 
   @override
   State<VerticalScrollTabbar> createState() => _VerticalScrollTabbarState();
@@ -97,30 +101,34 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar> with Single
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TabBar(
-          isScrollable: widget.isScrollable,
-          indicatorColor: widget.indicatorColor,
-          tabs: [...widget.tabs],
-          controller: tabController,
-          onTap: (index) {
-            mutex = true;
-            scrollController.animateTo(indexList[index],
-                duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
-          },
-        ),
-        Expanded(
-          child: _ListWidget(
-              scrollController: scrollController,
-              onIndexInit: (indexList) {
-                this.indexList.addAll(indexList);
-              },
-              children: [
-                ...widget.children,
-              ]),
-        ),
-      ],
+    return SizedBox(
+      width: widget.width ?? double.infinity,
+      height: widget.height ?? double.infinity,
+      child: Column(
+        children: [
+          TabBar(
+            isScrollable: widget.isScrollable,
+            indicatorColor: widget.indicatorColor,
+            tabs: [...widget.tabs],
+            controller: tabController,
+            onTap: (index) {
+              mutex = true;
+              scrollController.animateTo(indexList[index],
+                  duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+            },
+          ),
+          Expanded(
+            child: _ListWidget(
+                scrollController: scrollController,
+                onIndexInit: (indexList) {
+                  this.indexList.addAll(indexList);
+                },
+                children: [
+                  ...widget.children,
+                ]),
+          ),
+        ],
+      ),
     );
   }
 }
