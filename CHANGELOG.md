@@ -30,3 +30,9 @@
 ## 0.0.4+4
 * update readme
 * fix dart format
+
+## 0.0.5
+* add width, height property
+* update readme
+* fix example
+* add assert desc
