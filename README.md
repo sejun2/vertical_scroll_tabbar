@@ -25,6 +25,8 @@ VerticalScrollTabbar(
  | isScrollable | bool         | Whether the tab bar is scrollable.     | false | false|
  | indicatorColor | Color       | The color of selected tab's underline. | false | |
  | onTabChanged | Function(int index) | Called when tab index is changed       | false | |
+ | width | double? | Width of the entire tabbar       | false | null |
+ | height | double? | Height of the entire tabbar       | false | null |
 
 
 ## Requirements
