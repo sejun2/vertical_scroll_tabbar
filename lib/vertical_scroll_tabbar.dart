@@ -1,6 +1,7 @@
 library vertical_scroll_tabbar;
 
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 /// A vertical scroll tabbar, which provides automated tabbar index changing when content is scrolled.
@@ -36,8 +37,7 @@ class VerticalScrollTabbar extends StatefulWidget {
   State<VerticalScrollTabbar> createState() => _VerticalScrollTabbarState();
 }
 
-class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
-    with SingleTickerProviderStateMixin {
+class _VerticalScrollTabbarState extends State<VerticalScrollTabbar> with SingleTickerProviderStateMixin {
   //TODO("Satoshi"): Set options for tabbar
 
   /// Scroll controller for the tab bar's content section.
@@ -58,8 +58,7 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
 
   @override
   void initState() {
-    assert(widget.children.length == widget.tabs.length,
-        'children.length must equal tabs.length');
+    assert(widget.children.length == widget.tabs.length, 'children.length must equal tabs.length');
 
     tabController = TabController(
       length: widget.tabs.length,
@@ -108,8 +107,7 @@ class _VerticalScrollTabbarState extends State<VerticalScrollTabbar>
           onTap: (index) {
             mutex = true;
             scrollController.animateTo(indexList[index],
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.easeIn);
+                duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
           },
         ),
         Expanded(
@@ -161,11 +159,9 @@ class _ListWidgetState extends State<_ListWidget> {
       final ancestor = context.findRenderObject();
 
       for (var element in widget.children) {
-        assert(element.key != null && element.key is GlobalKey);
+        assert(element.key != null && element.key is GlobalKey, 'Children must have GlobalKey');
 
-        final res = ((element.key as GlobalKey)
-                .currentContext
-                ?.findRenderObject() as RenderBox)
+        final res = ((element.key as GlobalKey).currentContext?.findRenderObject() as RenderBox)
             .localToGlobal(Offset.zero, ancestor: ancestor);
 
         indexes.add(res.dy);
