@@ -36,3 +36,6 @@
 * update readme
 * fix example
 * add assert desc
+
+## 0.0.5+1
+* update readme
