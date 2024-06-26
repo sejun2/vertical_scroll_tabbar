@@ -1,3 +1,4 @@
+import 'package:example/shoppling_item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:vertical_scroll_tabbar/vertical_scroll_tabbar.dart';
 
@@ -10,6 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(shoppingItems);
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(),
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
                     alignment: Alignment.center,
                     width: 100,
                     child: const Text(
-                      'REDS',
+                      'men\'s clothing',
                       style: TextStyle(color: Colors.black),
                     )),
               ),
@@ -36,7 +39,7 @@ class MyApp extends StatelessWidget {
                     alignment: Alignment.center,
                     width: 100,
                     child: const Text(
-                      'BLUES',
+                      'jewelery',
                       style: TextStyle(color: Colors.black),
                     )),
               ),
@@ -45,25 +48,16 @@ class MyApp extends StatelessWidget {
                     alignment: Alignment.center,
                     width: 100,
                     child: const Text(
-                      'GREENS',
+                      'electronics',
                       style: TextStyle(color: Colors.black),
                     )),
               ),
               Tab(
                 child: Container(
                     alignment: Alignment.center,
-                    width: 100,
+                    width: 120,
                     child: const Text(
-                      'BLUES',
-                      style: TextStyle(color: Colors.black),
-                    )),
-              ),
-              Tab(
-                child: Container(
-                    alignment: Alignment.center,
-                    width: 100,
-                    child: const Text(
-                      'REDS',
+                      'women\'s clothing',
                       style: TextStyle(color: Colors.black),
                     )),
               ),
@@ -71,20 +65,35 @@ class MyApp extends StatelessWidget {
             children: [
               Column(
                 key: GlobalKey(),
-                children: [...reds],
+                children: [
+                  Text('Men\'s Clothing', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  ...shoppingItems
+                      .map((element) => element.category == 'men\'s clothing' ? ShoppingItemCard(item: element) :
+                  const SizedBox()),
+                      ]
               ),
-              Column(key: GlobalKey(), children: [...greens]),
+              Column(key: GlobalKey(), children: [
+                Text( 'Jewelery', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                ...shoppingItems
+                    .map((element) => element.category == 'jewelery' ? ShoppingItemCard(item: element) : const
+                SizedBox())
+              ]),
               Column(
                 key: GlobalKey(),
-                children: [...blues],
+                children: [
+                  Text('Electronics', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  ...shoppingItems.map(
+                      (element) => element.category == 'electronics' ? ShoppingItemCard(item: element) : const
+                      SizedBox())
+                ],
               ),
               Column(
                 key: GlobalKey(),
-                children: [...greens],
-              ),
-              Column(
-                key: GlobalKey(),
-                children: [...reds],
+                children: [
+                  Text('Women\'s Clothing', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  ...shoppingItems.map((element) =>
+                      element.category == 'women\'s clothing' ? ShoppingItemCard(item: element) : const SizedBox())
+                ],
               ),
             ],
           ),
@@ -94,230 +103,78 @@ class MyApp extends StatelessWidget {
   }
 }
 
-List<Widget> reds = [
-  Container(padding: const EdgeInsets.all(20), child: const Text("Reds title")),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.red,
-  ),
-];
+class ShoppingItemCard extends StatelessWidget {
+  const ShoppingItemCard({super.key, required this.item});
 
-List<Widget> greens = [
-  Container(padding: const EdgeInsets.all(20), child: const Text("Blues title")),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.blue,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.blue,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.blue,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.blue,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.blue,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.blue,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.blue,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.blue,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.blue,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.blue,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.blue,
-  ),
-];
+  final ShoppingItem item;
 
-List<Widget> blues = [
-  Container(padding: const EdgeInsets.all(20), child: const Text("Greens title")),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.green,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.green,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.green,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.green,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.green,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.green,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.green,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.green,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.green,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.green,
-  ),
-  Container(
-    margin: const EdgeInsets.all(20),
-    height: 100,
-    width: 100,
-    color: Colors.green,
-  ),
-];
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          // shopping item
+          SizedBox(
+            width: 170,
+            height: 170,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Image.network(item.image, fit: BoxFit.cover,
+                  frameBuilder: (BuildContext context, Widget child, int? frame, bool wasSynchronouslyLoaded) {
+                return AnimatedOpacity(
+                  opacity: frame == null ? 0 : 1,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeOut,
+                  child: ClipRRect(borderRadius: BorderRadius.circular(20), child: child),
+                );
+              }),
+            ),
+          ),
+          // shopping item details
+          const SizedBox(width: 20),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  item.title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 2,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  item.description,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  maxLines: 2,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  '\$${item.price}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  maxLines: 2,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
